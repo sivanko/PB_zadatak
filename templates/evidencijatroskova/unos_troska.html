@@ -1,0 +1,54 @@
+{% include "evidencijatroskova/head.html" %}
+
+<div class="add_wo" align="center">
+        <h>Unos transakcije</h>
+         <br><br>
+
+        <form id="workorderforafall" method="post" action="/evidencijatroskova/unos/">
+        {% csrf_token %}
+        <table class="hovertable">
+	        <tr>
+                <td align="center">Datum</td>
+            
+                <td align="center">Iznos transakcije</td>
+                <td align="center">Valuta</td>
+                <td align="center">Vrsta transakcije</td>
+                	   
+                <td align="center">Korisnik</td>
+           
+                <td align="center">Opis transakcije</td>
+            </tr>
+            <tr>
+                <td><input type=date id="datum" name="datum" id="datum"></td>
+                <td><input id="iznos" name="iznos"></td>
+                <td>
+                    <select id="valuta" name="valuta" > 
+                        <option value="HRK">HRK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="CHF">CHF</option>
+                        <option value="GBP">GBP</option>
+                    </select></td>
+                </td>
+                <td><select id="vrsta" name="vrsta" > 
+                    {% for mt in izbornik %}
+                        <option value="{{ mt.0 }}">{{ mt.1 }}</option>
+                    {% endfor %} 
+                </select></td>
+                <td><input id="korisnik" name="korisnik"></td>
+                <td><input id="opis" name="opis"></td>
+           
+            </tr>
+
+	</table>
+	</br></br>
+			
+        <input type="submit" name="submit" value="Unesi" class="styled-button-8" />
+    </form>
+</div>
+<script type="text/javascript"> 
+    $(function(){
+      $("#datum").datepicker();
+    });
+
+</script>

@@ -1,0 +1,61 @@
+{% include "evidencijatroskova/head.html" %}
+
+<div class="add_wo" align="center">
+    <h>Pregled transakcija</h>
+     <br><br>
+
+    <form id="workorderforafall" method="post" action="/evidencijatroskova/pregled/">
+    {% csrf_token %}
+    <table class="hovertable">
+        <tr>
+            <td align="center">Redoslijed sortiranja</td>
+        
+            <!--<td align="center">Zapisa po stranici</td>-->
+            </tr>
+        <tr>
+            <td>
+                <select id="sortiranje" name="sortiranje" > 
+                    <option value="ASC">Uzlazno</option>
+                    <option value="DSC">Silazno</option>
+                </select></td>
+            </td>
+            <!--<td><input id="broj_zapisa" name="broj_zapisa"></td>-->
+           
+        </tr>
+
+</table>
+</br></br>
+        
+    <input type="submit" name="submit" value="Unesi" class="styled-button-8" />
+</form>
+
+{% if zapisi %}
+
+<table class="hovertable" class="hovertable">
+    <tr>
+        <td align="center">Datum</td>
+    
+        <td align="center">Iznos transakcije</td>
+        <td align="center">Valuta</td>
+        <td align="center">Vrsta transakcije</td>
+               
+        <td align="center">Korisnik</td>
+   
+        <td align="center">Opis transakcije</td>
+    </tr>
+{% for res in zapisi %}
+<tr>
+    <td align="right">{{ res.ev_datum }}</td>
+
+    <td align="right">{{ res.ev_iznos }}</td>
+    <td align="right">{{ res.ev_valuta }}</td>
+    <td align="right">{{ res.ev_vrsta }}</td>
+           
+    <td align="right">{{ res.ev_korisnik }}</td>
+
+    <td align="rightr">{{ res.ev_opis }}</td>
+</tr>
+{% endfor %}
+</table>    
+{% endif %}
+</div>

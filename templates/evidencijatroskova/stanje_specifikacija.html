@@ -1,0 +1,29 @@
+{% include "evidencijatroskova/head.html" %}
+
+<div class="add_wo" align="center">
+    <h>Pregled stanja valuta</h>
+     <br><br>
+
+    
+{% if specifikacija %}
+
+<table class="hovertable" class="hovertable">
+    <tr>
+        <td align="center">Transakcija</td>
+        <td align="center">Valuta</td>
+    
+        <td align="center">Stanje</td>
+        
+    </tr>
+{% for res in specifikacija %}
+<tr>
+    <td align="right">{{ res.0 }}</td>
+
+    <td align="right">{{ res.1 }}</td>
+    <td align="right">{{ res.2 }}</td>
+    
+</tr>
+{% endfor %}
+</table>    
+{% endif %}
+</div>

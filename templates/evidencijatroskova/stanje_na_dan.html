@@ -1,0 +1,39 @@
+{% include "evidencijatroskova/head.html" %}
+
+<div class="add_wo" align="center">
+    <h>Ukupno stanje HRK</h>
+     <br><br>
+     <table class="hovertable" class="hovertable">
+        <tr>
+            <td align="center">Stanje HRK na dan: {{ datum }}</td>
+            <td align="center">{{ iznos }}</td>
+        
+                        
+        </tr>
+
+    </table>
+    <br><br>
+    
+{% if specifikacija %}
+
+<table class="hovertable" class="hovertable">
+    <tr>
+        <td align="center">Valuta</td>
+        <td align="center">Tečaj</td>
+    
+        <td align="center">Suma</td>
+        
+    </tr>
+{% for res in specifikacija %}
+<tr>
+    <td align="right">{{ res.0 }}</td>
+
+    <td align="right">{{ res.1 }}</td>
+    <td align="right">{{ res.2 }}</td>
+    
+</tr>
+{% endfor %}
+
+</table>    
+{% endif %}
+</div>
